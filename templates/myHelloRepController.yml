@@ -8,8 +8,8 @@ spec:
     app: helloworld
   template:
     metadata:
-      labelsl:
-        appL: helloworld
+      labels:
+        app: helloworld
     spec: 
       containers: 
       - name: k8s-demo
