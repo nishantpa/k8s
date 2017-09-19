@@ -1,0 +1,18 @@
+# << Swami Shreeji >>
+# @nishantpatel; 18 Sep 2017
+# Part of k8s 101
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - name: redis-persistent-storage
+      mountPath: /data/redis
+  volumes:
+  - name: redis-persistent-storage
+    emptyDir: {}
