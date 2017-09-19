@@ -1,0 +1,29 @@
+# << Swami Shreeji >>
+# @nishantpatel ; 19 Sep 2017
+# k8s tuts; PHP guestbook app
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: redis-slave
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: redis 
+        role: slave 
+        tier: backend
+    spec:
+      containers:
+      - name: slave
+        image: gcr.io/google-samples/gb-redisslave:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: env
+        ports:
+        - containerPort: 6379
